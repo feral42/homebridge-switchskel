@@ -1,6 +1,6 @@
 {
   "name": "homebridge-switchskel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Skeleton Homebridge Switch Plugin",
   "main": "index.js",
   "scripts": {
