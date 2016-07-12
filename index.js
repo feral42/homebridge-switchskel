@@ -33,7 +33,6 @@ class SwitchSkeleton {
     setStatus(status, callback) {
         this._status = status;
         this.log("setStatus", this._status);
-        this.characteristicOn.setValue(this._status);
         callback();
     }
     
