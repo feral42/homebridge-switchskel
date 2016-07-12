@@ -39,6 +39,12 @@ class SwitchSkeleton {
     constructor(log, config) {
         this.name = config.name;
         this._status = false;
+        
+        this.service = new Service.Switch(this.name);
+        this.service
+            .getCharacteristic(Characteristic.On)
+            .on('get', this.getStatus.bind(this))
+            .on('set', this.setStatus.bind(this));
     }
     
     getStatus(callback) {
