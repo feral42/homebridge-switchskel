@@ -1,33 +1,9 @@
 /*
-Service.Switch = function(displayName, subtype) {
-  Service.call(this, displayName, '00000049-0000-1000-8000-0026BB765291', subtype);
-
-  // Required Characteristics
-  this.addCharacteristic(Characteristic.On);
-
-  // Optional Characteristics
-  this.addOptionalCharacteristic(Characteristic.Name);
-};
-
-inherits(Service.Switch, Service);
-
-Service.Switch.UUID = '00000049-0000-1000-8000-0026BB765291';
-
-
-Characteristic.On = function() {
-  Characteristic.call(this, 'On', '00000025-0000-1000-8000-0026BB765291');
-  this.setProps({
-    format: Characteristic.Formats.BOOL,
-    perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
-  });
-  this.value = this.getDefaultValue();
-};
-
-inherits(Characteristic.On, Characteristic);
-
-Characteristic.On.UUID = '00000025-0000-1000-8000-0026BB765291';
+    Service.Switch contains one characteristic:
+        Characteristic.On
+        
+    Characteristic.On is a boolean value
 */
-
 var Service, Characteristic;
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
@@ -37,6 +13,7 @@ module.exports = function(homebridge) {
 
 class SwitchSkeleton {
     constructor(log, config) {
+        this.log = log;
         this.name = config.name;
         this._status = false;
         
@@ -48,11 +25,13 @@ class SwitchSkeleton {
     }
     
     getStatus(callback) {
+        this.log("getStatus", this._status);
         callback(this._status);
     }
     
     setStatus(status, callback) {
         this._status = status;
+        this.log("setStatus", this._status);
         callback();
     }
     
