@@ -1,0 +1,26 @@
+{
+  "name": "homebridge-switchskel",
+  "version": "0.0.1",
+  "description": "Skeleton Homebridge Switch Plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlaanderson/homebridge-switchskel.git"
+  },
+  "engines": {
+    "homebridge": ">=0.2.0"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "switch"
+  ],
+  "author": "Michael Anderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlaanderson/homebridge-switchskel/issues"
+  },
+  "homepage": "https://github.com/mlaanderson/homebridge-switchskel#readme"
+}
