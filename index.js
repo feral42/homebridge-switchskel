@@ -18,10 +18,11 @@ class SwitchSkeleton {
         this._status = false;
         
         this.service = new Service.Switch(this.name);
-        this.service
-            .getCharacteristic(Characteristic.On)
-            .on('get', this.getStatus.bind(this))
+        this.characteristicOn = this.service.getCharacteristic(Characteristic.On);
+        this.characteristicOn.on('get', this.getStatus.bind(this))
             .on('set', this.setStatus.bind(this));
+            
+        this.characteristicOn.setValue(this._status);
     }
     
     getStatus(callback) {
@@ -32,6 +33,7 @@ class SwitchSkeleton {
     setStatus(status, callback) {
         this._status = status;
         this.log("setStatus", this._status);
+        this.characteristicOn.setValue(this._status);
         callback();
     }
     
